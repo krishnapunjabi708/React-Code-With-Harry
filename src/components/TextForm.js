@@ -7,10 +7,12 @@ export default function TextForm(props) {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to Uppercase","success");
     }
     const handleLoClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to Lowercase","success");
     }
     const handleOnChange=(event)=>{
         // console.log("On change");
@@ -19,20 +21,24 @@ export default function TextForm(props) {
     const handleClearClick=()=>{     
         let newText = '';
         setText(newText);
+        props.showAlert("Text Cleared","success");
     }
     const handleColorChange=()=>{   
         let newText = text;
         document.getElementById("myBox").style.color="blue";
         setText(newText);
+        props.showAlert("Text Color Changed to Blue","success");
     }
     const handleCopy=()=>{   
         let text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Text Copied to Clipboard","success");
     }
     const handleExtraSpaces=()=>{   
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra Spaces Removed","success");
     }   
     return (
         <>
