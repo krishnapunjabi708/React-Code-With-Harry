@@ -25,19 +25,46 @@ let toggleMode = () => {
     setMode('dark');
     document.body.style.backgroundColor = '#161c22';
     showAlert("Dark mode has been enabled","success");
+    document.title = "TextUtils - Dark Mode";
+
   } else {
+  
     setMode('light');
     document.body.style.backgroundColor = 'white';
     showAlert("Light mode has been enabled","success");
+    document.title = "TextUtils - Light Mode";
   }
 }
+const changeMode = (newMode) => {
+  setMode(newMode);
+
+  if (newMode === 'dark') {
+    document.body.style.backgroundColor = '#161c22';
+    showAlert("Dark mode enabled", "success");
+  }
+  else if (newMode === 'light') {
+    document.body.style.backgroundColor = 'white';
+    showAlert("Light mode enabled", "success");
+  }
+  else if (newMode === 'red') {
+    document.body.style.backgroundColor = '#8b0000';
+    showAlert("Red mode enabled", "danger");
+  }
+  else if (newMode === 'blue') {
+    document.body.style.backgroundColor = '#0d6efd';
+    showAlert("Blue mode enabled", "primary");
+  }
+};
 
   return (
     <>
-<Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} about="About us"/>
+<Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} changeMode={changeMode} about="About us"/>
+
 <Alert alert={alert}/>
+
 <div className="container"><TextForm mode={mode} showAlert={showAlert} heading="Enter text to analyze below"/></div>
 {/* <About /> */}
+
     </>
   );
 }

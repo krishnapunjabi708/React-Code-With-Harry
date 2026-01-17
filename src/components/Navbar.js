@@ -25,10 +25,28 @@ export default function Navbar(props) {
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form> */}
 
-      <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-  <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="switchCheckDefault"/>
-  <label className="form-check-label" htmlFor="switchCheckDefault">Enable Dark Mode</label>
+      <div className="d-flex align-items-center">
+  {/* Theme Buttons */}
+  <button className="btn btn-light mx-1" onClick={() => props.changeMode('light')}>Light</button>
+  <button className="btn btn-dark mx-1" onClick={() => props.changeMode('dark')}>Dark</button>
+  <button className="btn btn-danger mx-1" onClick={() => props.changeMode('red')}>Red</button>
+  <button className="btn btn-primary mx-1" onClick={() => props.changeMode('blue')}>Blue</button>
+
+  {/* Existing Toggle */}
+  <div className={`form-check form-switch ms-3 text-${props.mode==='light'?'dark':'light'}`}>
+    <input
+      className="form-check-input"
+      onClick={props.toggleMode}
+      type="checkbox"
+      role="switch"
+      id="switchCheckDefault"
+    />
+    <label className="form-check-label" htmlFor="switchCheckDefault">
+      Enable Dark Mode
+    </label>
+  </div>
 </div>
+
     </div>
   </div>
 </nav>
