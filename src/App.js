@@ -4,8 +4,15 @@ import TextForm from './components/TextForm';
 import Navbar from './components/Navbar';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom"; 
 
-// import About from './components/About';
+import About from './components/About';
 
 
 function App() {
@@ -58,12 +65,21 @@ const changeMode = (newMode) => {
 
   return (
     <>
-<Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} changeMode={changeMode} about="About us"/>
+    {/* Exact is use for exact matching of the path , other wise it matches all paths that start with the given path also called partial matching */}
+    <Router>
+      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} changeMode={changeMode} about="About us" />
+      <Alert alert={alert} />
 
-<Alert alert={alert}/>
+      <Routes>
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/" element={<TextForm mode={mode} showAlert={showAlert} heading="Enter text to analyze below" />} />
+      </Routes>
+    </Router>
+ 
 
-<div className="container"><TextForm mode={mode} showAlert={showAlert} heading="Enter text to analyze below"/></div>
-{/* <About /> */}
+
+{/* <div className="container"><TextForm mode={mode} showAlert={showAlert} heading="Enter text to analyze below"/></div>
+<About /> */}
 
     </>
   );
