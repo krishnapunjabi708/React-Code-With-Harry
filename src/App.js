@@ -32,14 +32,14 @@ let toggleMode = () => {
     setMode('dark');
     document.body.style.backgroundColor = '#161c22';
     showAlert("Dark mode has been enabled","success");
-    document.title = "TextUtils - Dark Mode";
+    // document.title = "TextUtils - Dark Mode";
 
   } else {
   
     setMode('light');
     document.body.style.backgroundColor = 'white';
     showAlert("Light mode has been enabled","success");
-    document.title = "TextUtils - Light Mode";
+    // document.title = "TextUtils - Light Mode";
   }
 }
 const changeMode = (newMode) => {
@@ -71,8 +71,8 @@ const changeMode = (newMode) => {
       <Alert alert={alert} />
 
       <Routes>
-        <Route exact path="/about" element={<About />} />
-        <Route exact path="/" element={<TextForm mode={mode} showAlert={showAlert} heading="Enter text to analyze below" />} />
+        <Route exact path="/about" element={<About mode={mode}/>} />
+        <Route exact path="/" element={<TextForm mode={mode} showAlert={showAlert} heading="Try TextUtils- Word Counter , Character Counter , Removes extra Spaces" />} />
       </Routes>
     </Router>
  
